@@ -16,7 +16,7 @@ class NewVisitorTest(unittest.TestCase):
     def test_can_start_calculator_and_use_functions(self):
         
         # Paul known a online quiz app.
-        self.browser.get('http://localhost:8000/calapp/')
+        self.browser.get('http://localhost:8000/quiz/')
         # Paul notices the page title and header mention 'QUIZ'
         self.assertIn('QUIZ', self.browser.title)
         header_text = self.browser.find_element_by_tag_name('h1').text  
