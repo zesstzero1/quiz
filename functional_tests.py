@@ -13,7 +13,7 @@ class NewVisitorTest(unittest.TestCase):
     def tearDown(self):  
         self.browser.quit()
 
-    def test_can_start_calculator_and_use_functions(self):
+    def test_can_use_functions(self):
         
         # Paul known a online quiz app.
         self.browser.get('http://localhost:8000/quiz/1/')
