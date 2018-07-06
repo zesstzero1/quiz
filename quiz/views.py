@@ -5,6 +5,9 @@ from django.views import generic
 
 from .models import Choice, Question
 
+def home_page(request):
+    return render(request,'quiz/home.html')
+
 class DetailView(generic.DetailView):
     model = Question
     template_name = 'quiz/detail.html'
