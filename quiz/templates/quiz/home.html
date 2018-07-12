@@ -4,6 +4,20 @@
     </head>
     <body>
         <h1>Welcome to Quiz App</h1>
-        <a href="{% url 'quiz:detail' 1 %}">Click here to do the Question</a>
+        <br>
+        <h2>Add your Question</h2>
+        <form method="POST" id="add_q" action="/add_question">
+            <input name="q_in" id="new_question" placeholder="Add your Question" />
+            {% csrf_token %}
+        </form>
+        <button type="submit" form="add_q" value="Submit">Add</button>
+        
+        <h3>Question list</h3>
+        <table id="q_table">
+            {% for question_text in question %}  
+                <tr><td><a href="{% url 'quiz:detail' question_text.id %}" id="question_number {{ forloop.counter }}">{{ question_text }}</a></td></tr>
+            {% endfor %}
+        </table>
+        
     </body>
 </html>

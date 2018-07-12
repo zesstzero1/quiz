@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.views import generic
@@ -6,12 +6,17 @@ from django.views import generic
 from .models import Choice, Question
 
 def home_page(request):
-    return render(request,'quiz/home.html')
+    question = Question.objects.all()
+    return render(request,'quiz/home.html', {'question': question})
 
 class DetailView(generic.DetailView):
     model = Question
     template_name = 'quiz/detail.html'
 
+def add_question(request):
+    question = Question.objects.all
+    new_question = Question.objects.create(question_text = request.POST['q_in'])
+    return redirect('/')
 
 class ResultsView(generic.DetailView):
     model = Question
