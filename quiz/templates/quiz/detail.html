@@ -5,7 +5,8 @@
     <body>
 
         <h1>{{ question.question_text }}</h1>
-
+        <a href="{% url 'quiz:add_choice' question.id %}">Add True and False</a>
+        <br><br>
         {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
         <form action="{% url 'quiz:vote' question.id %}" method="post">
