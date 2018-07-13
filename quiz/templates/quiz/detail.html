@@ -16,6 +16,9 @@
             <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br />
         {% endfor %}
         <input type="submit" value="Vote" />
+        <br><br>
         </form>
+        <br><br>
+        <a href="{% url 'quiz:del_question' question.id %}">delete this question</a>
     </body>
 </html>

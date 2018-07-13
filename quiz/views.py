@@ -25,6 +25,12 @@ def add_choice(request, question_id):
     question.choice_set.create(choice_text='False', votes=0)
     return render(request, 'quiz/detail.html', {'question': question})
 
+
+def del_question(request, question_id):
+    question = get_object_or_404(Question, pk=question_id)
+    question.delete()
+    return redirect('/')
+
 class ResultsView(generic.DetailView):
     model = Question
     template_name = 'quiz/results.html'
