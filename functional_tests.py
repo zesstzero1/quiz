@@ -49,9 +49,20 @@ class NewVisitorTest(unittest.TestCase):
         question = self.browser.find_element_by_tag_name('h1').text  
         self.assertIn('Is this a Quiz App?', question)
 
-        # Paul see 'Add True and False' for create choices and clicked it
-        create_choice = self.browser.find_element_by_link_text('Add True and False').click()
+        # Paul add the 1st choice 'True' to inputbox
+        input_choice1 = self.browser.find_element_by_id('new_choice')
+        input_choice1.send_keys('True')
         time.sleep(1)
+        # Paul enter 'Add' button
+        input_choice1.send_keys(Keys.ENTER)
+        time.sleep(3)
+
+        # Paul add the 1st choice 'True' to inputbox
+        input_choice2 = self.browser.find_element_by_id('new_choice')
+        input_choice2.send_keys('False')
+        time.sleep(1)
+        # Paul enter 'Add' button
+        input_choice2.send_keys(Keys.ENTER)
 
         # Paul knew the answer then clicked on the choice 'True'
         time.sleep(1)
