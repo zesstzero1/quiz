@@ -7,11 +7,12 @@
         <h1>{{ question.question_text }}</h1>
         <br>
         <h2>Add your Choice</h2>
-        <form method="POST" id="add_c" action="/{{ question.id }}/add_choice">
+        <form method="POST" id="add_c" action="/{{ question.id }}/add_choice" >
             <input name="c_in" id="new_choice" placeholder="Add your Choice" />
             {% csrf_token %}
         </form>
-        <button type="submit" form="add_c" value="Submit">Add</button>
+        <button type="submit" form="add_c" value="Submit">Add</button> or
+        <a href="{% url 'quiz:add_True_and_False' question.id %}">Instant add True and False</a>
 
         <br><br>
         {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
@@ -22,6 +23,8 @@
             <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
             <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br />
         {% endfor %}
+        
+        <br><br>
         <input type="submit" value="Vote" />
         <br><br>
         </form>
