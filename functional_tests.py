@@ -49,17 +49,27 @@ class NewVisitorTest(unittest.TestCase):
         question = self.browser.find_element_by_tag_name('h1').text  
         self.assertIn('Is this a Quiz App?', question)
 
-        # Paul add the 1st choice 'True' to inputbox
+        # Paul see header 'Add your Choice'
+        add_choice_header = self.browser.find_element_by_tag_name('h2').text  
+        self.assertIn('Add your Choice', add_choice_header)
+
+        # Paul see link 'Instant add True and False'
+        # Paul want to make True/False choices then Paul clicked it
+        make_True_False = self.browser.find_element_by_link_text('Instant add True and False').click()
+        time.sleep(2)
+        
+        # Paul want to make another choices with inputbox
+        # Paul add the 3rd choice 'This is not a Quiz App' to inputbox
         input_choice1 = self.browser.find_element_by_id('new_choice')
-        input_choice1.send_keys('True')
+        input_choice1.send_keys('This is not a Quiz App')
         time.sleep(1)
         # Paul enter 'Add' button
         input_choice1.send_keys(Keys.ENTER)
         time.sleep(3)
 
-        # Paul add the 1st choice 'True' to inputbox
+        # Paul add the 4th choice 'No' to inputbox
         input_choice2 = self.browser.find_element_by_id('new_choice')
-        input_choice2.send_keys('False')
+        input_choice2.send_keys('No')
         time.sleep(1)
         # Paul enter 'Add' button
         input_choice2.send_keys(Keys.ENTER)
@@ -86,6 +96,16 @@ class NewVisitorTest(unittest.TestCase):
         # Paul see result of 'False'
         false = self.browser.find_element_by_id('2').text
         self.assertIn('False', false)
+        time.sleep(1)    
+
+        # Paul see result of 'This is not a Quiz App'
+        not_a_quiz = self.browser.find_element_by_id('3').text
+        self.assertIn('This is not a Quiz App', not_a_quiz)
+        time.sleep(1)    
+
+        # Paul see result of 'No'
+        no = self.browser.find_element_by_id('4').text
+        self.assertIn('No', no)
         time.sleep(1)    
     
         # Paul done the quiz but he wants to delete his question 'Is this a Quiz App?'
